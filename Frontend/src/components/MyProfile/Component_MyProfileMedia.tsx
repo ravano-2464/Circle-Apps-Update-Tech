@@ -42,7 +42,7 @@ const Component_MyProfileMedia: React.FC<IProps> = () => {
           {post &&
             post.image &&
             post.image.map((img: IImage) => (
-              <AspectRatio ratio={1 / 1}>
+              <AspectRatio ratio={16 / 9}>
                 <Image
                   cursor={"pointer"}
                   src={img.image}
