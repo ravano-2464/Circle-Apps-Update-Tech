@@ -85,7 +85,7 @@ const Component_Sidebar = (): React.JSX.Element => {
         >
           <Image
             boxSize="48px"
-            src="https://gcdnb.pbrd.co/images/IjucgOcWuO1g.png?o=1"
+            src="../../src/assets/images/circle.png"
             alt="Circle Logo"
           />
           <Text display={display}>circle</Text>

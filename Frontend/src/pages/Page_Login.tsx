@@ -54,7 +54,7 @@ const Page_Login: React.FC = () => {
         <Heading color="#00a013" display={"flex"} gap={1} alignItems={"center"}>
           <Image
             boxSize="28px"
-            src="https://gcdnb.pbrd.co/images/IjucgOcWuO1g.png?o=1"
+            src="../../src/assets/images/circle.png"
             alt="Circle Logo"
           />
           circle
