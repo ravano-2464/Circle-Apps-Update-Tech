@@ -63,7 +63,7 @@ export const getProfile = async (req: Request, res: Response) => {
 
     res.json({
       status: true,
-      message: "success ambil profel",
+      message: "success ambil profile",
       data: profile,
     });
   } catch (error) {

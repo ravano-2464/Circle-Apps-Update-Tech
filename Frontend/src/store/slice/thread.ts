@@ -26,7 +26,7 @@ const initialState: IInitialState = {
   userThreads: [],
   loading: false,
   errorMessage: "",
-  successMessage: "",
+  successMessage: "Thread Created Successfully!",
   isError: false,
 };
 
@@ -42,7 +42,7 @@ const threadSlice = createSlice({
     builder.addCase(createThreadAsync.fulfilled, (state) => {
       state.isError = false;
       state.loading = false;
-      state.successMessage = "Thread created successfully!";
+      state.successMessage = "Thread Created Successfully!";
     });
     builder.addCase(createThreadAsync.rejected, (state, action) => {
       state.isError = true;
