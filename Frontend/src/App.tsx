@@ -19,6 +19,22 @@ import Page_Login from "./pages/Page_Login";
 import Page_ImageDetail from "./pages/Page_ImageDetail";
 // import { API, setAuthToken } from "./libs/api";
 
+const IsLogin = () => {
+  if (!localStorage.token) {
+    return <Navigate to={"/login"} />;
+  } else {
+    return <Outlet />;
+  }
+};
+
+const IsNotLogin = () => {
+  if (localStorage.token) {
+    return <Navigate to={"/"} />;
+  } else {
+    return <Outlet />;
+  }
+};
+
 const App: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -56,21 +72,6 @@ const App: React.FC = () => {
     checkToken();
   }, []);
 
-  const IsLogin = () => {
-    if (!localStorage.token) {
-      return <Navigate to={"/login"} />;
-    } else {
-      return <Outlet />;
-    }
-  };
-
-  const IsNotLogin = () => {
-    if (localStorage.token) {
-      return <Navigate to={"/"} />;
-    } else {
-      return <Outlet />;
-    }
-  };
 
   return (
     <Routes>

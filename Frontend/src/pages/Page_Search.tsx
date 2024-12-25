@@ -13,11 +13,15 @@ import { searchUsers } from "@/libs/api/call/user";
 import Component_UserCard from "@/components/Component_UserCard";
 import { IUser } from "@/type/app";
 import nav from "../../src/css/home.module.css";
+import { useAppSelector } from "@/store";
 
 const Page_Search = () => {
   const [query, setQuery] = useState("");
   const [users, setUsers] = useState<IUser[]>([])
   const [searchStatus, setSearchStatus] = useState("");
+  const {user:loginUser} = useAppSelector(state=> state.auth)
+
+  
 
   const handleSearch = async (searchQuery: string) => {
     try {
@@ -27,7 +31,9 @@ const Page_Search = () => {
         setSearchStatus("User tidak ditemukan");
         setUsers([]);
       } else {
-        setUsers(foundUsers.data.data);
+        const tempUsers:IUser[] = foundUsers.data.data
+        const filteredUser:IUser[] = loginUser ? tempUsers?.filter(usr => usr.id !== loginUser?.id) : []
+        setUsers(filteredUser);
         setSearchStatus("");
       }
     } catch (error) {
@@ -87,8 +93,9 @@ const Page_Search = () => {
           {searchStatus && <Text color="gray">{searchStatus}</Text>}
 
           <Box>
-            {users.map((user) => (
+            {users.map((user, index) => (
               <Component_UserCard
+                key={index}
                 fullname={user.fullname}
                 username={user.username}
                 avatar={user.profile?.avatar || ""}
